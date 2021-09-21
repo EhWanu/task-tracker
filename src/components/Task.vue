@@ -3,7 +3,10 @@
     '', 'task']">
         <h3>
             {{ task.text }}
-            <i class='fas'>&times;</i>
+            <i 
+                @click='onDelete(task.id)'
+                class='fas'>&times;
+            </i>
          </h3>
         <p>
             {{task.day}}
@@ -16,6 +19,11 @@
         name: 'task',
         props: {
             task: Object
+        },
+        methods: {
+            onDelete(id) {
+                this.$emit('delete-task', id)
+            }
         }
     }
 </script>
